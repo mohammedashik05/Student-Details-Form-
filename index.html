@@ -1,60 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Student Details Form</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  
-</head>
-<body class="bg-cover bg-center min-h-screen flex items-center justify-center relative" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1');">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Details Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-cover bg-center min-h-screen flex items-center justify-center relative"
+    style="
+      background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1');
+    "
+  >
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
 
-  <!-- Overlay -->
-  <div class="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
+    <!-- Form Container -->
+    <div
+      class="relative z-10 max-w-md w-full bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl p-8 transform transition duration-500 hover:scale-105 hover:rotate-[-1deg]"
+    >
+      <h2 class="text-2xl font-bold text-white mb-6 text-center">
+        Student Details Form
+      </h2>
+      <form id="studentForm" class="space-y-4 text-white">
+        <div>
+          <label for="name" class="block mb-1">Full Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="fullName"
+            required
+            class="w-full px-4 py-2 rounded-lg bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div>
+          <label for="roll" class="block mb-1">Roll Number:</label>
+          <input
+            type="text"
+            id="roll"
+            name="rollNumber"
+            required
+            class="w-full px-4 py-2 rounded-lg bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div>
+          <label for="email" class="block mb-1">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-2 rounded-lg bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div>
+          <label for="department" class="block mb-1">Department:</label>
+          <select
+            id="department"
+            style="background-color: grey"
+            name="department"
+            required
+            class="w-full px-4 py-2 rounded-lg bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">Select</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="MECH">MECH</option>
+            <option value="CIVIL">CIVIL</option>
+          </select>
+        </div>
+        <div>
+          <label for="year" class="block mb-1">Year of Study:</label>
+          <select
+            id="year"
+            style="background-color: grey"
+            name="yearOfStudy"
+            required
+            class="w-full px-4 py-2 rounded-lg bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">Select</option>
+            <option value="First Year">First Year</option>
+            <option value="Second Year">Second Year</option>
+            <option value="Third Year">Third Year</option>
+            <option value="Final Year">Final Year</option>
+          </select>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-blue-500 hover:bg-blue-600 transition text-white font-semibold py-2 px-4 rounded-lg shadow-lg hover:shadow-xl"
+        >
+          Submit
+        </button>
+        <p id="responseMsg" class="text-center mt-2 text-sm"></p>
+      </form>
+    </div>
 
-  <!-- Form Container -->
-  <div class="relative z-10 max-w-md w-full bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl p-8 transform transition duration-500 hover:scale-105 hover:rotate-[-1deg]">
-    <h2 class="text-2xl font-bold text-white mb-6 text-center">Student Details Form</h2>
-    <form id="studentForm" class="space-y-4 text-white">
-      <div>
-        <label for="name" class="block mb-1">Full Name:</label>
-        <input type="text" id="name" name="fullName" required class="w-full px-4 py-2 rounded-lg bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
-      </div>
-      <div>
-        <label for="roll" class="block mb-1">Roll Number:</label>
-        <input type="text" id="roll" name="rollNumber" required class="w-full px-4 py-2 rounded-lg bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
-      </div>
-      <div>
-        <label for="email" class="block mb-1">Email:</label>
-        <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-lg bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
-      </div>
-      <div>
-        <label for="department" class="block mb-1">Department:</label>
-        <select id="department" name="department" required class="w-full px-4 py-2 rounded-lg bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <option value="">Select</option>
-          <option value="CSE">CSE</option>
-          <option value="ECE">ECE</option>
-          <option value="EEE">EEE</option>
-          <option value="MECH">MECH</option>
-          <option value="CIVIL">CIVIL</option>
-        </select>
-      </div>
-      <div>
-        <label for="year" class="block mb-1">Year of Study:</label>
-        <select id="year" name="yearOfStudy" required class="w-full px-4 py-2 rounded-lg bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <option value="">Select</option>
-          <option value="1">First Year</option>
-          <option value="2">Second Year</option>
-          <option value="3">Third Year</option>
-          <option value="4">Final Year</option>
-        </select>
-      </div>
-      <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 transition text-white font-semibold py-2 px-4 rounded-lg shadow-lg hover:shadow-xl">Submit</button>
-      <p id="responseMsg" class="text-center mt-2 text-sm"></p>
-    </form>
-  </div>
-
-  <script src="response.js"></script>
-</body>
+    <script src="response.js"></script>
+  </body>
 </html>

@@ -1,32 +1,25 @@
-const apiUrl = "https://script.google.com/macros/s/AKfycbwIloeRXxrXLyXBmONP1O2oI8DrYQTODNewojzvBB0MuSB_381QmGnBTFrqs6SOsYn_Nw/exec";
+const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLScuiyHi7L8DMj2RgyF39643saKaO2ZauobRB-jU51gAxBrF_Q/formResponse";
 
 document.getElementById("studentForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const data = {
-    fullName: document.getElementById("name").value,
-    rollNumber: document.getElementById("roll").value,
-    email: document.getElementById("email").value,
-    department: document.getElementById("department").value,
-    yearOfStudy: document.getElementById("year").value
-  };
+  const formData = new FormData();
+  formData.append("entry.2005620554", document.getElementById("name").value);         // Full Name
+  formData.append("entry.1045781291", document.getElementById("roll").value);         // Roll Number
+  formData.append("entry.1065046570", document.getElementById("email").value);        // Email
+  formData.append("entry.1166974658", document.getElementById("department").value);   // Department
+  formData.append("entry.839337160", document.getElementById("year").value);          // Year of Study
 
-  fetch(apiUrl, {
+  fetch(formUrl, {
     method: "POST",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" }
+    mode: "no-cors",
+    body: formData
   })
-  .then(res => res.json())
-  .then(response => {
-    if (response.status === "success") {
-      document.getElementById("responseMsg").textContent = "✅ Form submitted successfully!";
-      document.getElementById("studentForm").reset();
-    } else {
-      document.getElementById("responseMsg").textContent = "❌ Submission failed: " + response.message;
-    }
+  .then(() => {
+    document.getElementById("responseMsg").textContent = "✅ Form submitted successfully!";
+    document.getElementById("studentForm").reset();
   })
-  .catch(err => {
-    console.error("Submission failed", err);
-    document.getElementById("responseMsg").textContent = "❌ Network or server error.";
+  .catch(() => {
+    document.getElementById("responseMsg").textContent = "❌ Submission failed.";
   });
 });
